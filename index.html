@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <title>DO I KNOW WHO YOU AM?</title>
+    <script src="vendor/sqlite3.js"></script>
+    <script src="main.js"></script>
+    <style>
+      button {
+	  display: block;
+	  width: 100%;
+	  height: 5em;
+      }
+      h2 {
+	  text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="questionbox" style="display: none">
+      <h2 id="questiontext"></h2>
+      <button onclick="answerYes();">Yes</button>
+      <button onclick="answerNo();">No</button>
+      <button onclick="askQuestion();">I don't know or can't answer</button>
+    </div>
+    <div id="guessbox" style="display: none">
+      <h2>Are you thinking of <span id="guess"></span>?</h2>
+      <button onclick="guessRight();">Yes</button>
+      <button onclick="guessWrong();">No</button>
+    </div>
+    <div id="addbox" style="display: none">
+      <h2>Then who were you thinking of?</h2>
+      <input type="text" id="name"></input>
+      <button onclick="addPerson();">Done</button>
+    </div>
+    <div id="startgamebox" style="display: none">
+      <h2>Think of a fictional character and let me know when you're ready to start.</h2>
+      <button onclick="startGame();">Start game</button>
+    </div>
+    <div id="loadingbox">
+      <h2>loading assorted awesomeness...</h2>
+    </div>
+    <div id="gloatbox" style="display: none">
+      <h2>Behold my dazzling comprehension of the human psyche!</h2>
+      <button onclick="playAgain();">Play again?</button>
+    </div>
+  </body>
+</html>
