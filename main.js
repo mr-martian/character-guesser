@@ -140,13 +140,15 @@ function answerNo() {
 
 function addPerson() {
     let name = document.getElementById('name').value;
-    DB.exec("INSERT INTO characters(name) VALUES(?) ON CONFLICT DO NOTHING",
-	    {bind: [name]});
-    for (const obj of GAME.answers) {
-	DB.exec(
-	    "INSERT INTO answers(name, question, value) VALUES(?, ?, ?) ON CONFLICT DO NOTHING",
-	    {bind: [name, obj.question, obj.answer]},
-	);
+    if (name.length > 0) {
+	DB.exec("INSERT INTO characters(name) VALUES(?) ON CONFLICT DO NOTHING",
+		{bind: [name]});
+	for (const obj of GAME.answers) {
+	    DB.exec(
+		"INSERT INTO answers(name, question, value) VALUES(?, ?, ?) ON CONFLICT DO NOTHING",
+		{bind: [name, obj.question, obj.answer]},
+	    );
+	}
     }
     document.getElementById('addbox').style.display = 'none';
     document.getElementById('startgamebox').style.display = 'block';
